@@ -53,6 +53,8 @@
 		84510D0624987435005216F1 /* 120125029.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84510CDD24987435005216F1 /* 120125029.mp3 */; };
 		84510D0724987435005216F1 /* 12309111.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84510CDE24987435005216F1 /* 12309111.mp3 */; };
 		84510D0824987435005216F1 /* 339744.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84510CDF24987435005216F1 /* 339744.mp3 */; };
+		D12CD4FA2498F4920041B9AA /* HXQMusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12CD4F92498F4920041B9AA /* HXQMusicModel.swift */; };
+		D12CD4FD2498F57C0041B9AA /* HXQMusicTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12CD4FC2498F57C0041B9AA /* HXQMusicTool.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +106,8 @@
 		84510CDD24987435005216F1 /* 120125029.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 120125029.mp3; sourceTree = "<group>"; };
 		84510CDE24987435005216F1 /* 12309111.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 12309111.mp3; sourceTree = "<group>"; };
 		84510CDF24987435005216F1 /* 339744.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 339744.mp3; sourceTree = "<group>"; };
+		D12CD4F92498F4920041B9AA /* HXQMusicModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXQMusicModel.swift; sourceTree = "<group>"; };
+		D12CD4FC2498F57C0041B9AA /* HXQMusicTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HXQMusicTool.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +154,8 @@
 		84510CAF24985EE6005216F1 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				D12CD4FB2498F4BB0041B9AA /* Tool */,
+				D12CD4F82498F3F80041B9AA /* Model */,
 				84510C9F24985CBA005216F1 /* ViewController.swift */,
 			);
 			path = Class;
@@ -235,6 +241,22 @@
 			path = MP3s;
 			sourceTree = "<group>";
 		};
+		D12CD4F82498F3F80041B9AA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D12CD4F92498F4920041B9AA /* HXQMusicModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D12CD4FB2498F4BB0041B9AA /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				D12CD4FC2498F57C0041B9AA /* HXQMusicTool.swift */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -261,9 +283,10 @@
 		84510C9024985CBA005216F1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = HXQ;
 				LastSwiftUpdateCheck = 1150;
 				LastUpgradeCheck = 1150;
-				ORGANIZATIONNAME = d1ev;
+				ORGANIZATIONNAME = huxq;
 				TargetAttributes = {
 					84510C9724985CBA005216F1 = {
 						CreatedOnToolsVersion = 11.5;
@@ -348,7 +371,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				84510CA024985CBA005216F1 /* ViewController.swift in Sources */,
+				D12CD4FD2498F57C0041B9AA /* HXQMusicTool.swift in Sources */,
 				84510C9C24985CBA005216F1 /* AppDelegate.swift in Sources */,
+				D12CD4FA2498F4920041B9AA /* HXQMusicModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
