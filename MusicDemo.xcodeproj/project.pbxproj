@@ -55,6 +55,7 @@
 		84510D0824987435005216F1 /* 339744.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84510CDF24987435005216F1 /* 339744.mp3 */; };
 		D12CD4FA2498F4920041B9AA /* HXQMusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12CD4F92498F4920041B9AA /* HXQMusicModel.swift */; };
 		D12CD4FD2498F57C0041B9AA /* HXQMusicTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12CD4FC2498F57C0041B9AA /* HXQMusicTool.swift */; };
+		D17D3331249A3BA400632E56 /* HXQAudioTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17D3330249A3BA400632E56 /* HXQAudioTool.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +109,7 @@
 		84510CDF24987435005216F1 /* 339744.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 339744.mp3; sourceTree = "<group>"; };
 		D12CD4F92498F4920041B9AA /* HXQMusicModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXQMusicModel.swift; sourceTree = "<group>"; };
 		D12CD4FC2498F57C0041B9AA /* HXQMusicTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HXQMusicTool.swift; sourceTree = "<group>"; };
+		D17D3330249A3BA400632E56 /* HXQAudioTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HXQAudioTool.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				D12CD4FC2498F57C0041B9AA /* HXQMusicTool.swift */,
+				D17D3330249A3BA400632E56 /* HXQAudioTool.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 			files = (
 				84510CA024985CBA005216F1 /* ViewController.swift in Sources */,
 				D12CD4FD2498F57C0041B9AA /* HXQMusicTool.swift in Sources */,
+				D17D3331249A3BA400632E56 /* HXQAudioTool.swift in Sources */,
 				84510C9C24985CBA005216F1 /* AppDelegate.swift in Sources */,
 				D12CD4FA2498F4920041B9AA /* HXQMusicModel.swift in Sources */,
 			);

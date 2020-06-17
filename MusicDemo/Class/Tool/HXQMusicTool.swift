@@ -11,8 +11,8 @@ import UIKit
 /// 音乐工具类
 class HXQMusicTool: NSObject {
 
-    static var _musics: [HXQMusicModel] = []
-    static var _playingMusic: HXQMusicModel?
+    static private var _musics: [HXQMusicModel] = []
+    static private var _playingMusic: HXQMusicModel?
     
     /// 获取所有音乐
     class func musics() -> [HXQMusicModel] {
@@ -31,6 +31,34 @@ class HXQMusicTool: NSObject {
             _playingMusic = musics()[1]
         }
         return _playingMusic!
+    }
+    
+    class func setupPlayingMusic(music: HXQMusicModel) {
+        _playingMusic = music
+    }
+    
+    class func previous() -> HXQMusicModel {
+        let index = musics().firstIndex { (model) -> Bool in
+            return _playingMusic?.name == model.name
+        }
+        var previousIndex = index! - 1
+        if previousIndex < 0 {
+            previousIndex = musics().count - 1
+        }
+        let previous = musics()[previousIndex]
+        return previous
+    }
+    
+    class func next() -> HXQMusicModel {
+        let index = musics().firstIndex { (model) -> Bool in
+            return _playingMusic?.name == model.name
+        }
+        var nextIndex = index! + 1
+        if nextIndex >= musics().count {
+            nextIndex = 0
+        }
+        let next = musics()[nextIndex]
+        return next
     }
     
 }
