@@ -81,11 +81,13 @@
                                     </label>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="idm-sS-xCu">
                                         <rect key="frame" x="40" y="5.5" width="334" height="31"/>
+                                        <gestureRecognizers/>
                                         <color key="minimumTrackTintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <action selector="sliderBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="N3x-8R-cvJ"/>
-                                            <action selector="sliderEnd:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="QuM-En-CXb"/>
+                                            <action selector="sliderBegin:" destination="BYZ-38-t0r" eventType="touchDown" id="Qsv-En-TjE"/>
+                                            <action selector="sliderEnd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x5R-Yl-eyo"/>
                                             <action selector="sliderValueChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="7jc-gd-Th3"/>
+                                            <outletCollection property="gestureRecognizers" destination="Kk5-Ky-klY" appends="YES" id="I3z-h7-IAC"/>
                                         </connections>
                                     </slider>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ta-Oc-PLr" userLabel="playButton">
@@ -195,6 +197,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Kk5-Ky-klY">
+                    <connections>
+                        <action selector="sliderTapAction:" destination="BYZ-38-t0r" id="e1e-PB-poG"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="112.5"/>
         </scene>

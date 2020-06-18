@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CAAnimationDelegate {
     
     // 背景图片
     @IBOutlet weak var backgroundImageView: UIImageView!
@@ -44,9 +44,11 @@ class ViewController: UIViewController {
         if sender.isSelected {
             currentPlayer?.pause()
             removeTimer()
+            pauseAnimation()
         } else {
             currentPlayer?.play()
             setupTimer()
+            continueAnimation()
         }
         sender.isSelected = !sender.isSelected
     }
@@ -65,15 +67,25 @@ class ViewController: UIViewController {
     
     // MARK: - slider methods
     @IBAction func sliderBegin(_ sender: UISlider) {
-        
+        removeTimer()
     }
     
     @IBAction func sliderEnd(_ sender: UISlider) {
+        currentPlayer?.currentTime = Double(sender.value) * currentPlayer!.duration
+        setupTimer()
+    }
+    
+    @IBAction func sliderTapAction(_ sender: UITapGestureRecognizer) {
+        let point = sender.location(in: sender.view)
+        let ratio = point.x / sender.view!.frame.size.width
         
+        currentPlayer?.currentTime = Double(ratio) * currentPlayer!.duration
+        currentTimeLabel.text = timeToString(time: Double(ratio) * currentPlayer!.duration)
+        playSlider.value = Float(ratio)
     }
     
     @IBAction func sliderValueChange(_ sender: UISlider) {
-        
+        currentTimeLabel.text = timeToString(time: Double(sender.value) * currentPlayer!.duration)
     }
     
     // MARK: - life cycle
@@ -103,8 +115,42 @@ class ViewController: UIViewController {
         
         removeTimer()
         setupTimer()
+        startAnimation()
     }
     
+    // 开启封面图旋转动画
+    func startAnimation() {
+        let animate = CABasicAnimation(keyPath: "transform.rotation.z")
+        animate.delegate = self
+        animate.fromValue = 0
+        animate.toValue = Double.pi * 2
+        animate.duration = 30
+        animate.repeatCount = Float(NSIntegerMax)
+        self.coverImageView.layer.add(animate, forKey: "coverImageTransformZ")
+    }
+    
+    func pauseAnimation() {
+        let time = self.coverImageView.layer.convertTime(CACurrentMediaTime(), from: nil)
+        self.coverImageView.layer.speed = 0
+        self.coverImageView.layer.timeOffset = time
+    }
+    
+    func continueAnimation() {
+        let pausedTime = self.coverImageView.layer.timeOffset
+        self.coverImageView.layer.speed = 1.0
+        self.coverImageView.layer.timeOffset = 0
+        self.coverImageView.layer.beginTime = 0
+        let continueTime = self.coverImageView.layer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
+        self.coverImageView.layer.beginTime = continueTime
+    }
+    
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        if (anim.value(forKey: "coverImageTransformZ") != nil) {
+            print(flag)
+        }
+    }
+    
+    // MARK: - 时间片 methods
     /// 设置时间片
     func setupTimer() {
         self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (timer) in
