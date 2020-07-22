@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController, CAAnimationDelegate {
+class ViewController: UIViewController, CAAnimationDelegate, UIScrollViewDelegate {
     
     // 背景图片
     @IBOutlet weak var backgroundImageView: UIImageView!
@@ -31,6 +31,10 @@ class ViewController: UIViewController, CAAnimationDelegate {
     @IBOutlet weak var previousButton: UIButton!
     // 下一首
     @IBOutlet weak var nextButton: UIButton!
+    // 歌词view
+    @IBOutlet weak var licView: HXQLicView!
+    // 歌词label
+    @IBOutlet weak var licLabel: UILabel!
     
     var currentPlayer: AVAudioPlayer?
     
@@ -98,6 +102,8 @@ class ViewController: UIViewController, CAAnimationDelegate {
         self.coverImageView.layer.borderWidth = 5
         self.coverImageView.layer.borderColor = UIColor.gray.cgColor
         
+        self.licView.contentSize = CGSize(width: self.view.frame.size.width*2, height: 0)
+        
         setupMusic()
     }
     
@@ -112,6 +118,8 @@ class ViewController: UIViewController, CAAnimationDelegate {
         playButton.isSelected = player.isPlaying
         totalTimeLabel.text = timeToString(time: player.duration)
         currentTimeLabel.text = timeToString(time: player.currentTime)
+        
+        self.licView.licName = music.lrcname
         
         removeTimer()
         setupTimer()
@@ -171,6 +179,16 @@ class ViewController: UIViewController, CAAnimationDelegate {
         let second: Int = Int(round(time).truncatingRemainder(dividingBy: 60))
         return "\(String(format: "%02d", minuate)):\(String(format: "%02d", second))"
     }
+    
+    // MARK: - scrollview delegate
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // 歌词view滑动模糊
+        let point = scrollView.contentOffset
+        let alpha = 1 - point.x / scrollView.frame.size.width
+        self.coverImageView.alpha = alpha
+        self.licLabel.alpha = alpha
+    }
+    
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent

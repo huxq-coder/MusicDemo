@@ -56,6 +56,9 @@
 		D12CD4FA2498F4920041B9AA /* HXQMusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12CD4F92498F4920041B9AA /* HXQMusicModel.swift */; };
 		D12CD4FD2498F57C0041B9AA /* HXQMusicTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12CD4FC2498F57C0041B9AA /* HXQMusicTool.swift */; };
 		D17D3331249A3BA400632E56 /* HXQAudioTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17D3330249A3BA400632E56 /* HXQAudioTool.swift */; };
+		D1EA32E524C8553600E6D487 /* HXQLicTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EA32E424C8553600E6D487 /* HXQLicTool.swift */; };
+		D1EA32EB24C8635500E6D487 /* HXQLicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EA32EA24C8635500E6D487 /* HXQLicView.swift */; };
+		D1EA32ED24C869D300E6D487 /* HXQLicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EA32EC24C869D300E6D487 /* HXQLicModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +113,9 @@
 		D12CD4F92498F4920041B9AA /* HXQMusicModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXQMusicModel.swift; sourceTree = "<group>"; };
 		D12CD4FC2498F57C0041B9AA /* HXQMusicTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HXQMusicTool.swift; sourceTree = "<group>"; };
 		D17D3330249A3BA400632E56 /* HXQAudioTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HXQAudioTool.swift; sourceTree = "<group>"; };
+		D1EA32E424C8553600E6D487 /* HXQLicTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HXQLicTool.swift; sourceTree = "<group>"; };
+		D1EA32EA24C8635500E6D487 /* HXQLicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXQLicView.swift; sourceTree = "<group>"; };
+		D1EA32EC24C869D300E6D487 /* HXQLicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HXQLicModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,9 +162,10 @@
 		84510CAF24985EE6005216F1 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				D1EA32E924C85D4000E6D487 /* ViewController */,
+				D1EA32E624C857B900E6D487 /* View */,
 				D12CD4FB2498F4BB0041B9AA /* Tool */,
 				D12CD4F82498F3F80041B9AA /* Model */,
-				84510C9F24985CBA005216F1 /* ViewController.swift */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -247,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				D12CD4F92498F4920041B9AA /* HXQMusicModel.swift */,
+				D1EA32EC24C869D300E6D487 /* HXQLicModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -256,8 +264,25 @@
 			children = (
 				D12CD4FC2498F57C0041B9AA /* HXQMusicTool.swift */,
 				D17D3330249A3BA400632E56 /* HXQAudioTool.swift */,
+				D1EA32E424C8553600E6D487 /* HXQLicTool.swift */,
 			);
 			path = Tool;
+			sourceTree = "<group>";
+		};
+		D1EA32E624C857B900E6D487 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D1EA32EA24C8635500E6D487 /* HXQLicView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D1EA32E924C85D4000E6D487 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				84510C9F24985CBA005216F1 /* ViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,8 +400,11 @@
 			files = (
 				84510CA024985CBA005216F1 /* ViewController.swift in Sources */,
 				D12CD4FD2498F57C0041B9AA /* HXQMusicTool.swift in Sources */,
+				D1EA32E524C8553600E6D487 /* HXQLicTool.swift in Sources */,
 				D17D3331249A3BA400632E56 /* HXQAudioTool.swift in Sources */,
+				D1EA32EB24C8635500E6D487 /* HXQLicView.swift in Sources */,
 				84510C9C24985CBA005216F1 /* AppDelegate.swift in Sources */,
+				D1EA32ED24C869D300E6D487 /* HXQLicModel.swift in Sources */,
 				D12CD4FA2498F4920041B9AA /* HXQMusicModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -524,7 +552,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5A4QEC9J56;
 				INFOPLIST_FILE = MusicDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -543,7 +571,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5A4QEC9J56;
 				INFOPLIST_FILE = MusicDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
