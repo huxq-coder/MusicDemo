@@ -14,11 +14,35 @@ class HXQLicView: UIScrollView, UITableViewDataSource {
     var licName: String!{
         didSet{
             licArray = HXQLicTool.licWithLicName(licName: licName)
+            tableView.reloadData()
         }
     }
     
     var tableView: UITableView!
     var licArray: [HXQLicModel]!
+    
+    var currentIndex = 0
+    
+    
+    var currentTime: TimeInterval!{
+        didSet{
+            for i in 0..<self.licArray.count {
+                let licModel = self.licArray[i]
+                let nextIndex = i + 1
+                var nextLicModel = HXQLicModel()
+                if nextIndex < self.licArray.count {
+                    nextLicModel = self.licArray[nextIndex]
+                }
+                if i != self.currentIndex && currentTime >= licModel.time! && currentTime < nextLicModel.time! {
+                    let currentIndexPath = IndexPath(row: i, section: 0)
+                    self.currentIndex = i
+                    self.tableView.scrollToRow(at: currentIndexPath, at: .top, animated: true)
+                    
+                }
+            }
+        }
+    }
+    
     
     
     required init?(coder: NSCoder) {

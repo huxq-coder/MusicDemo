@@ -39,6 +39,7 @@ class ViewController: UIViewController, CAAnimationDelegate, UIScrollViewDelegat
     var currentPlayer: AVAudioPlayer?
     
     var timer: Timer?
+    var licTimer: Timer?
     
     
     
@@ -123,6 +124,9 @@ class ViewController: UIViewController, CAAnimationDelegate, UIScrollViewDelegat
         
         removeTimer()
         setupTimer()
+        removeLicTimer()
+        setupLicTimer()
+        
         startAnimation()
     }
     
@@ -159,7 +163,7 @@ class ViewController: UIViewController, CAAnimationDelegate, UIScrollViewDelegat
     }
     
     // MARK: - 时间片 methods
-    /// 设置时间片
+    /// 设置播放时间的时间片
     func setupTimer() {
         self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (timer) in
             self.currentTimeLabel.text = self.timeToString(time: self.currentPlayer!.currentTime)
@@ -172,6 +176,21 @@ class ViewController: UIViewController, CAAnimationDelegate, UIScrollViewDelegat
     func removeTimer() {
         self.timer?.invalidate()
         self.timer = nil
+    }
+    
+    /// 设置歌词滚动的时间片
+    func setupLicTimer() {
+        self.licTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { (timer) in
+            self.licView.currentTime = self.currentPlayer?.currentTime
+            print("---------")
+        }
+        RunLoop.main.add(self.licTimer!, forMode: .common)
+        self.licTimer!.fire()
+    }
+    
+    func removeLicTimer() {
+        self.licTimer?.invalidate()
+        self.licTimer = nil
     }
 
     func timeToString(time: TimeInterval) -> String {

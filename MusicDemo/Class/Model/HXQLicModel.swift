@@ -13,16 +13,21 @@ class HXQLicModel: NSObject {
     
     var lic: String?
     
-    var time: String?
+    var time: Double?
     
+    override init() {
+        
+    }
     
     init(lic: String) {
         super.init()
         
         let array = lic.components(separatedBy: "]")
         self.lic = array[1]
-        self.time = array[0].components(separatedBy: "[")[1]
-        
+        // 00:09.06
+        let timeString = array[0].components(separatedBy: "[")[1]
+        let min = timeString[..<timeString.index(timeString.startIndex, offsetBy: 2)]
+        let second = timeString[timeString.index(timeString.lastIndex(of: ":")!, offsetBy: 1)..<timeString.firstIndex(of: ".")!]
+        self.time = Double(min)! * 60 + Double(second)! + 0.1 * Double(timeString[timeString.index(timeString.firstIndex(of: ".")!, offsetBy: 1)..<timeString.endIndex])!
     }
-
 }
