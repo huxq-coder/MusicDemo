@@ -9,21 +9,21 @@
 import UIKit
 
 /// 歌词工具类
-class HXQLicTool: NSObject {
+class HXQLrcTool: NSObject {
     
     /// 通过歌曲名词获取歌词数组
     /// - Parameter licName: 歌曲名称
-    class func licWithLicName(licName: String) -> [HXQLicModel] {
+    class func licWithLicName(licName: String) -> [HXQLrcModel] {
         let path = Bundle.main.path(forResource: licName, ofType: nil)
         let lic = try! String.init(contentsOfFile: path!, encoding: .utf8)
         let lics = lic.components(separatedBy: "\n")
-        var models = [HXQLicModel]()
+        var models = [HXQLrcModel]()
         for lineLic in lics {
             // 校验数据
             guard lineLic.hasPrefix("[") else {
                 continue
             }
-            let model = HXQLicModel(lic: lineLic)
+            let model = HXQLrcModel(lic: lineLic)
             models.append(model)
         }
         return models

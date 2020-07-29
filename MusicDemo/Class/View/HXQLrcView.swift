@@ -11,17 +11,19 @@ import UIKit
 /// 歌词显示view
 class HXQLrcView: UIScrollView, UITableViewDataSource {
 
-    var licName: String!{
+    var lrcName: String!{
         didSet{
             // 切换歌曲，重置索引
             self.currentIndex = 0
-            licArray = HXQLicTool.licWithLicName(licName: licName)
+            lrcArray = HXQLrcTool.licWithLicName(licName: lrcName)
             tableView.reloadData()
         }
     }
     
     var tableView: UITableView!
-    var licArray: [HXQLicModel]!
+    var lrcArray: [HXQLrcModel]!
+    
+    var lrcLabel: HXQLrcLabel?
     
     var currentIndex = 0
     
@@ -29,28 +31,30 @@ class HXQLrcView: UIScrollView, UITableViewDataSource {
     
     var currentTime: TimeInterval!{
         didSet{
-            for i in 0..<self.licArray.count-1 {
-                let licModel = self.licArray[i]
+            for i in 0..<self.lrcArray.count-1 {
+                let lrcModel = self.lrcArray[i]
                 let nextIndex = i + 1
-                var nextLicModel = HXQLicModel()
-                if nextIndex < self.licArray.count {
-                    nextLicModel = self.licArray[nextIndex]
+                var nextLicModel = HXQLrcModel()
+                if nextIndex < self.lrcArray.count {
+                    nextLicModel = self.lrcArray[nextIndex]
                 }
 
-                if i != self.currentIndex && currentTime >= licModel.time! && currentTime < nextLicModel.time! {
+                if i != self.currentIndex && currentTime >= lrcModel.time! && currentTime < nextLicModel.time! {
                     let currentIndexPath = IndexPath(row: i, section: 0)
                     let priorIndexPath = IndexPath(row: self.currentIndex, section: 0)
 
                     self.currentIndex = i
                     self.tableView.reloadRows(at: [currentIndexPath, priorIndexPath], with: .none)
                     self.tableView.scrollToRow(at: currentIndexPath, at: .top, animated: true)
+                    self.lrcLabel?.text = lrcModel.lrc
                 }
-                if i == self.currentIndex && !licModel.lic!.isEmpty {
-                    let value = (currentTime - licModel.time!) / (nextLicModel.time! - licModel.time!)
+                if i == self.currentIndex && !lrcModel.lrc!.isEmpty {
+                    let value = (currentTime - lrcModel.time!) / (nextLicModel.time! - lrcModel.time!)
                     let indexPath = IndexPath(row: self.currentIndex, section: 0)
                     
-                    if let cell: HXQLicCell = tableView.cellForRow(at: indexPath) as? HXQLicCell {
-                        cell.licLabel?.progress = CGFloat(value)
+                    if let cell: HXQLrcCell = tableView.cellForRow(at: indexPath) as? HXQLrcCell {
+                        cell.lrcLabel?.progress = CGFloat(value)
+                        self.lrcLabel?.progress = CGFloat(value)
                     }
                 }
             }
@@ -87,20 +91,20 @@ class HXQLrcView: UIScrollView, UITableViewDataSource {
     
     // MARK: - tableview DataSource方法
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return licArray.count
+        return lrcArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = HXQLicCell.licCellWithTableView(tableView: tableView)
+        let cell = HXQLrcCell.licCellWithTableView(tableView: tableView)
         
         if self.currentIndex == indexPath.row {
-            cell.licLabel?.font = UIFont.systemFont(ofSize: 20)
+            cell.lrcLabel?.font = UIFont.systemFont(ofSize: 20)
         } else {
-            cell.licLabel?.font = UIFont.systemFont(ofSize: 14)
-            cell.licLabel?.progress = 0.0
+            cell.lrcLabel?.font = UIFont.systemFont(ofSize: 14)
+            cell.lrcLabel?.progress = 0.0
         }
-        let model = licArray[indexPath.row]
-        cell.licLabel?.text = model.lic
+        let model = lrcArray[indexPath.row]
+        cell.lrcLabel?.text = model.lrc
         return cell
     }
 

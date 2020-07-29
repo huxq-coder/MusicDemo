@@ -9,9 +9,9 @@
 import UIKit
 
 /// 歌词数据模型
-class HXQLicModel: NSObject {
+class HXQLrcModel: NSObject {
     
-    var lic: String?
+    var lrc: String?
     
     var time: Double?
     
@@ -23,7 +23,7 @@ class HXQLicModel: NSObject {
         super.init()
         
         let array = lic.components(separatedBy: "]")
-        self.lic = array[1]
+        self.lrc = array[1]
         // 00:09.06
         let timeString = array[0].components(separatedBy: "[")[1]
         let min = timeString[..<timeString.index(timeString.startIndex, offsetBy: 2)]

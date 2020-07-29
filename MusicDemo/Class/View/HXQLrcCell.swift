@@ -8,27 +8,27 @@
 
 import UIKit
 
-class HXQLicCell: UITableViewCell {
+class HXQLrcCell: UITableViewCell {
 
-    public var licLabel: HXQLicLabel?
+    public var lrcLabel: HXQLrcLabel?
     
-    class func licCellWithTableView(tableView: UITableView) -> HXQLicCell {
+    class func licCellWithTableView(tableView: UITableView) -> HXQLrcCell {
         let ID = "cell"
         var cell = tableView.dequeueReusableCell(withIdentifier: ID)
         if cell == nil {
-            cell = HXQLicCell(style: .default, reuseIdentifier: ID)
+            cell = HXQLrcCell(style: .default, reuseIdentifier: ID)
         }
-        return cell as! HXQLicCell
+        return cell as! HXQLrcCell
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        let licLabel = HXQLicLabel()
+        let licLabel = HXQLrcLabel()
         licLabel.textColor = .white
         licLabel.textAlignment = .center
         licLabel.font = UIFont.systemFont(ofSize: 14)
         self.contentView.addSubview(licLabel)
-        self.licLabel = licLabel
+        self.lrcLabel = licLabel
         
         self.backgroundColor = .clear
         self.selectionStyle = .none
@@ -37,7 +37,7 @@ class HXQLicCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.licLabel!.frame = CGRect(x: 0, y: 0, width: self.contentView.bounds.size.width, height: self.contentView.bounds.size.height)
+        self.lrcLabel!.frame = CGRect(x: 0, y: 0, width: self.contentView.bounds.size.width, height: self.contentView.bounds.size.height)
     }
     
     required init?(coder: NSCoder) {

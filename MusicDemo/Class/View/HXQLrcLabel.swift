@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HXQLicLabel: UILabel {
+class HXQLrcLabel: UILabel {
 
     public var progress: CGFloat = 0.0 {
         didSet{

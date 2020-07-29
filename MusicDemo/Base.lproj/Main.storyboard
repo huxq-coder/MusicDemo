@@ -141,7 +141,7 @@
                                     <constraint firstItem="9Bn-5q-M0G" firstAttribute="leading" secondItem="idm-sS-xCu" secondAttribute="trailing" id="zS5-yB-gSz"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歌词内容显示" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjc-tb-R94">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歌词内容显示" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjc-tb-R94" customClass="HXQLrcLabel" customModule="MusicDemo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="667" width="414" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="JQL-Bx-pjE"/>
@@ -156,7 +156,7 @@
                                     <constraint firstAttribute="width" secondItem="BQO-oa-xAL" secondAttribute="height" multiplier="1:1" id="Ogg-ie-5mq"/>
                                 </constraints>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MbZ-Yh-irw" userLabel="licView" customClass="HXQLicView" customModule="MusicDemo" customModuleProvider="target">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MbZ-Yh-irw" userLabel="licView" customClass="HXQLrcView" customModule="MusicDemo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="144" width="414" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -196,8 +196,8 @@
                         <outlet property="backgroundImageView" destination="yEC-1a-12q" id="Qt4-Tq-6t6"/>
                         <outlet property="coverImageView" destination="BQO-oa-xAL" id="Lwj-5L-OBn"/>
                         <outlet property="currentTimeLabel" destination="VHe-52-Qbj" id="26w-9h-TyC"/>
-                        <outlet property="licLabel" destination="wjc-tb-R94" id="VCw-9A-mWe"/>
-                        <outlet property="licView" destination="MbZ-Yh-irw" id="ONF-Ah-8Ip"/>
+                        <outlet property="lrcLabel" destination="wjc-tb-R94" id="VCw-9A-mWe"/>
+                        <outlet property="lrcView" destination="MbZ-Yh-irw" id="ONF-Ah-8Ip"/>
                         <outlet property="musicNameLabel" destination="HXZ-qb-SnN" id="Rtj-8n-APy"/>
                         <outlet property="nextButton" destination="zWE-1s-UeL" id="aww-ka-6Nj"/>
                         <outlet property="playButton" destination="6Ta-Oc-PLr" id="Dtb-Z3-mcn"/>

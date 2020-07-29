@@ -32,14 +32,14 @@ class ViewController: UIViewController, CAAnimationDelegate, UIScrollViewDelegat
     // 下一首
     @IBOutlet weak var nextButton: UIButton!
     // 歌词view
-    @IBOutlet weak var licView: HXQLicView!
+    @IBOutlet weak var lrcView: HXQLrcView!
     // 歌词label
-    @IBOutlet weak var licLabel: UILabel!
+    @IBOutlet weak var lrcLabel: HXQLrcLabel!
     
     var currentPlayer: AVAudioPlayer?
     
     var timer: Timer?
-    var licTimer: CADisplayLink?
+    var lrcTimer: CADisplayLink?
     
     
     
@@ -103,8 +103,8 @@ class ViewController: UIViewController, CAAnimationDelegate, UIScrollViewDelegat
         self.coverImageView.layer.borderWidth = 5
         self.coverImageView.layer.borderColor = UIColor.gray.cgColor
         
-        self.licView.contentSize = CGSize(width: self.view.frame.size.width*2, height: 0)
-        
+        self.lrcView.contentSize = CGSize(width: self.view.frame.size.width*2, height: 0)
+        self.lrcView.lrcLabel = self.lrcLabel
         setupMusic()
     }
     
@@ -120,8 +120,8 @@ class ViewController: UIViewController, CAAnimationDelegate, UIScrollViewDelegat
         totalTimeLabel.text = timeToString(time: player.duration)
         currentTimeLabel.text = timeToString(time: player.currentTime)
         
-        self.licView.licName = music.lrcname
-        self.licView.duration = currentPlayer?.duration
+        self.lrcView.lrcName = music.lrcname
+        self.lrcView.duration = currentPlayer?.duration
         
         removeTimer()
         setupTimer()
@@ -169,6 +169,7 @@ class ViewController: UIViewController, CAAnimationDelegate, UIScrollViewDelegat
         self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (timer) in
             self.currentTimeLabel.text = self.timeToString(time: self.currentPlayer!.currentTime)
             self.playSlider.value = Float(self.currentPlayer!.currentTime / self.currentPlayer!.duration)
+            print("self.playSlider.value: \(self.playSlider.value), self.currentPlayer!.currentTime:\(self.currentPlayer!.currentTime), self.currentPlayer!.duration:\(self.currentPlayer!.duration)")
         }
         RunLoop.main.add(self.timer!, forMode: .common)
         self.timer!.fire()
@@ -181,17 +182,17 @@ class ViewController: UIViewController, CAAnimationDelegate, UIScrollViewDelegat
     
     /// 设置歌词滚动的时间片
     func setupLicTimer() {
-        self.licTimer = CADisplayLink(target: self, selector: #selector(updateLicTime))
-        self.licTimer!.add(to: RunLoop.main, forMode: RunLoop.Mode.common)
+        self.lrcTimer = CADisplayLink(target: self, selector: #selector(updateLicTime))
+        self.lrcTimer!.add(to: RunLoop.main, forMode: RunLoop.Mode.common)
     }
     
     @objc func updateLicTime() {
-        self.licView.currentTime = self.currentPlayer?.currentTime
+        self.lrcView.currentTime = self.currentPlayer?.currentTime
     }
     
     func removeLicTimer() {
-        self.licTimer?.invalidate()
-        self.licTimer = nil
+        self.lrcTimer?.invalidate()
+        self.lrcTimer = nil
     }
 
     func timeToString(time: TimeInterval) -> String {
@@ -206,7 +207,7 @@ class ViewController: UIViewController, CAAnimationDelegate, UIScrollViewDelegat
         let point = scrollView.contentOffset
         let alpha = 1 - point.x / scrollView.frame.size.width
         self.coverImageView.alpha = alpha
-        self.licLabel.alpha = alpha
+        self.lrcLabel.alpha = alpha
     }
     
     
