@@ -53,6 +53,8 @@
 		84510D0624987435005216F1 /* 120125029.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84510CDD24987435005216F1 /* 120125029.mp3 */; };
 		84510D0724987435005216F1 /* 12309111.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84510CDE24987435005216F1 /* 12309111.mp3 */; };
 		84510D0824987435005216F1 /* 339744.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84510CDF24987435005216F1 /* 339744.mp3 */; };
+		8495BB3224D14E0200EB3B79 /* HXQLicLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495BB3124D14E0200EB3B79 /* HXQLicLabel.swift */; };
+		8495BB3424D14E9B00EB3B79 /* HXQLicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495BB3324D14E9B00EB3B79 /* HXQLicCell.swift */; };
 		D12CD4FA2498F4920041B9AA /* HXQMusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12CD4F92498F4920041B9AA /* HXQMusicModel.swift */; };
 		D12CD4FD2498F57C0041B9AA /* HXQMusicTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12CD4FC2498F57C0041B9AA /* HXQMusicTool.swift */; };
 		D17D3331249A3BA400632E56 /* HXQAudioTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17D3330249A3BA400632E56 /* HXQAudioTool.swift */; };
@@ -110,6 +112,8 @@
 		84510CDD24987435005216F1 /* 120125029.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 120125029.mp3; sourceTree = "<group>"; };
 		84510CDE24987435005216F1 /* 12309111.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 12309111.mp3; sourceTree = "<group>"; };
 		84510CDF24987435005216F1 /* 339744.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 339744.mp3; sourceTree = "<group>"; };
+		8495BB3124D14E0200EB3B79 /* HXQLicLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HXQLicLabel.swift; sourceTree = "<group>"; };
+		8495BB3324D14E9B00EB3B79 /* HXQLicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HXQLicCell.swift; sourceTree = "<group>"; };
 		D12CD4F92498F4920041B9AA /* HXQMusicModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXQMusicModel.swift; sourceTree = "<group>"; };
 		D12CD4FC2498F57C0041B9AA /* HXQMusicTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HXQMusicTool.swift; sourceTree = "<group>"; };
 		D17D3330249A3BA400632E56 /* HXQAudioTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HXQAudioTool.swift; sourceTree = "<group>"; };
@@ -273,6 +277,8 @@
 			isa = PBXGroup;
 			children = (
 				D1EA32EA24C8635500E6D487 /* HXQLicView.swift */,
+				8495BB3124D14E0200EB3B79 /* HXQLicLabel.swift */,
+				8495BB3324D14E9B00EB3B79 /* HXQLicCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -399,6 +405,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				84510CA024985CBA005216F1 /* ViewController.swift in Sources */,
+				8495BB3224D14E0200EB3B79 /* HXQLicLabel.swift in Sources */,
+				8495BB3424D14E9B00EB3B79 /* HXQLicCell.swift in Sources */,
 				D12CD4FD2498F57C0041B9AA /* HXQMusicTool.swift in Sources */,
 				D1EA32E524C8553600E6D487 /* HXQLicTool.swift in Sources */,
 				D17D3331249A3BA400632E56 /* HXQAudioTool.swift in Sources */,

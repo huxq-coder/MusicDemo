@@ -28,6 +28,6 @@ class HXQLicModel: NSObject {
         let timeString = array[0].components(separatedBy: "[")[1]
         let min = timeString[..<timeString.index(timeString.startIndex, offsetBy: 2)]
         let second = timeString[timeString.index(timeString.lastIndex(of: ":")!, offsetBy: 1)..<timeString.firstIndex(of: ".")!]
-        self.time = Double(min)! * 60 + Double(second)! + 0.1 * Double(timeString[timeString.index(timeString.firstIndex(of: ".")!, offsetBy: 1)..<timeString.endIndex])!
+        self.time = Double(min)! * 60 + Double(second)! + 0.01 * Double(timeString[timeString.index(timeString.firstIndex(of: ".")!, offsetBy: 1)..<timeString.endIndex])!
     }
 }
