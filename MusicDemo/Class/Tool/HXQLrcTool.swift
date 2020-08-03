@@ -20,7 +20,15 @@ class HXQLrcTool: NSObject {
         var models = [HXQLrcModel]()
         for lineLic in lics {
             // 校验数据
+            /**
+            [ti:瓦解]
+            [ar:南拳妈妈]
+            [al:南拳妈妈的夏天]
+             */
             guard lineLic.hasPrefix("[") else {
+                continue
+            }
+            if lineLic.hasPrefix("[ti:") || lineLic.hasPrefix("[ar:") || lineLic.hasPrefix("[al:") {
                 continue
             }
             let model = HXQLrcModel(lic: lineLic)
